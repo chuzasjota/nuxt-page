@@ -1,7 +1,9 @@
 <template lang="html">
-  <div>
-    <h1>Albums</h1>
-    <albumCard :album="album" v-for="album in albums" :key="album.id" />
+  <div class="container">
+    <h1 class="title">Albums</h1>
+    <div class="columns is-multiline">
+      <albumCard :album="album" v-for="album in albums" :key="album.id" />
+    </div>
   </div>
 </template>
 
