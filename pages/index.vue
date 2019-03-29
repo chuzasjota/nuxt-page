@@ -1,24 +1,27 @@
 <template lang="html">
   <div>
-    <h1>{{titulo}}</h1>
-    <p>{{mensaje}}</p>
+    <h1>Albums</h1>
+    <albumCard :album="album" v-for="album in albums" :key="album.id" />
   </div>
 </template>
 
 <script>
   import axios from 'axios'
   import env from '../config/env'
+  import albumCard from '../components/albumCard'
   export  default{
     name: 'IndexPage',
+    components:{
+      albumCard
+    },
     data(){
       return {
-        titulo: 'Hola mundo',
-        mensaje: ''
+        albums: []
       }
     },
     created(){
       axios.get(`${env.endpoint}/albums`).then(response=> {
-        this.mensaje = response.status
+        this.albums = response.data
       })
     }
   }
